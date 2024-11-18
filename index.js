@@ -307,6 +307,10 @@ app.get('/hotels/filter/category', (req, res) => {
   res.json(result);
 });
 
+app.get('/hotels', (req, res) => {
+  res.json(hotels);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
