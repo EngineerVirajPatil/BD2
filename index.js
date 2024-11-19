@@ -256,7 +256,7 @@ app.get('/hotels/sort/pricing', (req, res) => {
   } else {
     result = hotelsCopy.sort(sortHotelsByPricingInDescending);
   }
-  res.json(result);
+  res.json({ hotels: result });
 });
 
 app.get('/hotels/sort/rating', (req, res) => {
@@ -268,7 +268,7 @@ app.get('/hotels/sort/rating', (req, res) => {
   } else {
     result = hotelsCopy.sort(sortHotelsByRatingInDescending);
   }
-  res.json(result);
+  res.json({ hotels: result });
 });
 
 app.get('/hotels/sort/reviews', (req, res) => {
@@ -280,7 +280,7 @@ app.get('/hotels/sort/reviews', (req, res) => {
   } else {
     result = hotelsCopy.sort(sortHotelsByReviewsInDescending);
   }
-  res.json(result);
+  res.json({ hotels: result });
 });
 
 app.get('/hotels/filter/amenity', (req, res) => {
@@ -288,7 +288,7 @@ app.get('/hotels/filter/amenity', (req, res) => {
   let result = hotels.filter((hotelObj) =>
     filterHotelsByAmenity(hotelObj, amenity)
   );
-  res.json(result);
+  res.json({ hotels: result });
 });
 
 app.get('/hotels/filter/country', (req, res) => {
@@ -296,7 +296,7 @@ app.get('/hotels/filter/country', (req, res) => {
   let result = hotels.filter((hotelObj) =>
     filterHotelsByCountry(hotelObj, country)
   );
-  res.json(result);
+  res.json({ hotels: result });
 });
 
 app.get('/hotels/filter/category', (req, res) => {
@@ -304,11 +304,12 @@ app.get('/hotels/filter/category', (req, res) => {
   let result = hotels.filter((hotelObj) =>
     filterHotelsByCategory(hotelObj, category)
   );
-  res.json(result);
+  res.json({ hotels: result });
 });
 
 app.get('/hotels', (req, res) => {
-  res.json(hotels);
+  let result=hotels;
+  res.json({ hotels: result });
 });
 
 app.listen(port, () => {
